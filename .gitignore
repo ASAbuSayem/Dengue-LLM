@@ -1,0 +1,21 @@
+# secrets — never commit tokens or keys
+.env
+*.key
+secrets*
+hf_token*
+
+# guideline PDFs and derived text (rebuilt by NB1; not redistributed)
+*.pdf
+corpus_chunks.jsonl
+pages.csv
+chunk_emb_*.npy
+
+# large or temporary outputs
+*.zip
+eval_test/
+raw_local/
+it_env/
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+.DS_Store
