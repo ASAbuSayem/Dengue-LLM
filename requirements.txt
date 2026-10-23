@@ -1,0 +1,15 @@
+# Colab/Kaggle already provide torch, transformers, numpy, pandas, matplotlib.
+# The notebooks install the rest themselves; listed here for local runs.
+torch
+transformers
+accelerate
+bitsandbytes>=0.43
+sentence-transformers>=3.0
+pymupdf
+pandas
+numpy
+scikit-learn
+statsmodels
+matplotlib
+openpyxl
+tqdm

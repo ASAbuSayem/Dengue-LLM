@@ -1,0 +1,15 @@
+qid,removed_reason
+Q004,"BD guideline gives two different adult paracetamol maxima (4 g on p49, 3 g on p53)"
+Q005,BD gives different compensated-shock starting rates (5-7 ml/kg/hr p49 vs 10 ml/kg or 300-500 ml/hr p61)
+Q006,BD gives two discharge fever-free periods (48 h p49 vs 24 h p69)
+Q017,"IN text (20 ml/kg over 15 min, p62) contradicts IN algorithm (10-20 ml/kg over 15-30 min, p63)"
+Q032,answer depends on a table whose layout is not recoverable from the PDF text
+Q041,"immunology, not a clinical-management rule"
+Q042,"immunology, not a clinical-management rule"
+Q045,BD p33 states both 36-48 h and 24-48 h for plasma leakage
+Q059,"IN table (p38) puts PP <20 under compensated shock, IN algorithm (p62) says PP >=20"
+Q064,evidence is a table-of-contents heading (p7); answer unsupported
+Q072,answer not supported by the quoted sentence
+Q073,evidence is a reference-list entry (p84)
+Q074,evidence is a reference-list entry (p84); dose not in guideline
+Q075,evidence is a reference-list entry (p84)
