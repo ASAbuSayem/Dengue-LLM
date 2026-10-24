@@ -2,7 +2,7 @@
 
 **An Offline Bilingual (Bangla–English) Evaluation for Bangladesh and India**
 
-Code and data for the paper submitted to ACLing 2026. This repository is anonymised for double-blind review.
+A bilingual (Bangla–English) benchmark and evaluation code for testing whether language models follow the national dengue clinical-management guidelines of Bangladesh and India. Everything runs offline on a single free-tier GPU, and the benchmark, notebooks and results can be reused for any model or study.
 
 ---
 
@@ -24,11 +24,11 @@ A multiple-choice benchmark built from the national dengue clinical-management g
 dengue-llm-guidelines/
 ├── notebooks/
 │   ├── NB1_Dengue_Corpus_and_Benchmark.ipynb   # guideline PDFs → page text → RAG chunks; benchmark drafting tools
-│   └── NB2_LLM_Evaluation.ipynb                # retrieval, model runs, statistics, tables, figures
+│   └── NB2_LLM_Evaluation.ipynb                # retrieval, model runs, statistics, tables, figures (Kaggle run, with outputs)
 ├── data/
-│   ├── benchmark.csv                           # final benchmark (129 items, English + Bangla)
+│   ├── benchmark.csv                           # final benchmark (128 items, English + Bangla)
 │   └── benchmark_removed_items.csv             # items removed during checking, with reasons
-├── results/                                    # raw model outputs, tables and figures go here
+├── results/                                    # final run: raw outputs, scored responses, tables, figures
 ├── requirements.txt
 ├── LICENSE                                     # code: MIT
 └── DATA_LICENSE                                # benchmark: CC BY 4.0
@@ -50,10 +50,10 @@ Page numbers in the benchmark (`page_BD`, `page_IN`) are **PDF page indices** (1
 | Set | Items | Meaning |
 |---|---|---|
 | BD | 67 | Answer defined by the Bangladesh guideline |
-| IN | 55 | Answer defined by the India guideline |
+| IN | 54 | Answer defined by the India guideline |
 | CONFLICT | 7 | Same question; the correct answer differs between the two guidelines (`answer_BD ≠ answer_IN`) |
 
-Each CONFLICT item is asked twice, once with the patient in Bangladesh and once with the patient in India, so the evaluation has 272 units per setting per model.
+Each CONFLICT item is asked twice, once with the patient in Bangladesh and once with the patient in India, so each language has 135 evaluation units (270 prompts per setting per model, 810 per model).
 
 **Columns:** `qid, set, topic, question_en, A_en … D_en, question_bn, A_bn … D_bn, answer_BD, answer_IN, page_BD, page_IN, evidence_quote, draft_by, draft_model, verified, bn_verified, verified_by, bn_draft_by, notes`
 
@@ -62,7 +62,7 @@ Each CONFLICT item is asked twice, once with the patient in Bangladesh and once 
 - Each answer was checked against the text of the cited guideline page, and items whose evidence was missing, ambiguous, or contradicted elsewhere in the same guideline were removed (see `benchmark_removed_items.csv`).
 - Bangla versions were translated from English; every number, dose and unit was checked against the English item.
 - Answer positions were shuffled so that A/B/C/D are balanced.
-- Qwen2.5-7B is both a drafter and an evaluated model; NB2 reports accuracy split by drafter (Table S1), and the tables mark it with †.
+- Qwen2.5-7B is both a drafter and an evaluated model; NB2 reports accuracy split by drafter (`S1_draft_bias`), and the tables mark it with †.
 
 Only 7 genuine Bangladesh–India conflicts were found: most clinical-management text in the two guidelines is shared. Several *within-guideline* inconsistencies were found as well; they are listed in `benchmark_removed_items.csv`.
 
@@ -113,6 +113,17 @@ Statistics: 95% confidence intervals from a cluster bootstrap over questions (2,
 - Answers are parsed again at analysis time, so a parser change needs no re-run.
 - The GPU name is stored with every response; compare timing only across runs on the same GPU type.
 
+## Main results (country-specific RAG, Kaggle T4)
+
+| Model | Accuracy EN | Accuracy BN | Peak VRAM (GB) |
+|---|---|---|---|
+| Qwen2.5-7B | 94.1 | 84.4 | 8.63 |
+| Qwen2.5-3B | 93.3 | 73.3 | 3.86 |
+| Llama-3.1-8B | 96.3 | 87.4 | 8.90 |
+| Gemma-2-9B | 94.1 | 92.6 | 11.36 |
+
+Without retrieval, accuracy is 55.6–63.0% (EN) and 48.1–60.0% (BN). Full tables are in `results/tables/`.
+
 ## Licence
 - Code: MIT (see `LICENSE`).
 - Benchmark (`data/`): CC BY 4.0 (see `DATA_LICENSE`). Short evidence quotes from the guidelines are included only to document each answer.
@@ -121,5 +132,7 @@ Statistics: 95% confidence intervals from a cluster bootstrap over questions (2,
 ## Disclaimer
 This benchmark is a research artefact. It is not clinical guidance; always follow the current official guideline.
 
-## Citation
-Citation details will be added after the review period.
+## Using this repository
+- **Evaluate another model:** add it to `HF_MODELS` in NB2 (cell 2), copy one of the model-run cells with the new tag, and put the tag in `RUN_MODELS`; new results are appended to the existing ones.
+- **Use only the benchmark:** `data/benchmark.csv` is self-contained (question, options, answer per country, guideline page and evidence sentence, in English and Bangla).
+- **Re-analyse without a GPU:** the statistics and figure cells in NB2 read `results/scored_responses.csv` and run in seconds.
