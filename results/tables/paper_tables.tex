@@ -1,0 +1,257 @@
+% ---- T1_accuracy ----
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{Accuracy (\%) by guideline set, language and setting.}
+\label{tab:acc}
+\begin{tabular}{llrrrrrrrr}
+\toprule
+Model & Setting & BD-only (EN) & IN-only (EN) & Conflict (EN) & All (EN) [95\% CI] & BD-only (BN) & IN-only (BN) & Conflict (BN) & All (BN) [95\% CI] \\
+\midrule
+Qwen2.5-7B$^\dagger$ & Zero-shot & 67.2 & 61.1 & 35.7 & 61.5 [53.3, 69.5] & 56.7 & 51.9 & 42.9 & 53.3 [45.2, 61.3] \\
+ & Generic RAG & 92.5 & 92.6 & 50.0 & 88.1 [82.8, 93.2] & 80.6 & 79.6 & 50.0 & 77.0 [69.8, 84.0] \\
+ & Country RAG & 94.0 & 94.4 & 92.9 & 94.1 [89.8, 97.8] & 86.6 & 85.2 & 71.4 & 84.4 [78.0, 90.4] \\
+\addlinespace
+Qwen2.5-3B$^\ddagger$ & Zero-shot & 56.7 & 68.5 & 35.7 & 59.3 [51.1, 67.2] & 46.3 & 53.7 & 35.7 & 48.1 [39.8, 56.2] \\
+ & Generic RAG & 89.6 & 87.0 & 57.1 & 85.2 [79.5, 90.9] & 79.1 & 66.7 & 50.0 & 71.1 [63.5, 77.9] \\
+ & Country RAG & 94.0 & 94.4 & 85.7 & 93.3 [88.9, 97.1] & 76.1 & 72.2 & 64.3 & 73.3 [65.9, 80.3] \\
+\addlinespace
+Llama-3.1-8B & Zero-shot & 55.2 & 64.8 & 21.4 & 55.6 [46.7, 64.1] & 50.7 & 64.8 & 21.4 & 53.3 [44.6, 61.5] \\
+ & Generic RAG & 92.5 & 90.7 & 50.0 & 87.4 [82.0, 92.5] & 85.1 & 77.8 & 50.0 & 78.5 [71.8, 85.2] \\
+ & Country RAG & 97.0 & 96.3 & 92.9 & 96.3 [92.6, 99.2] & 91.0 & 85.2 & 78.6 & 87.4 [81.6, 92.6] \\
+\addlinespace
+Gemma-2-9B & Zero-shot & 64.2 & 68.5 & 35.7 & 63.0 [55.0, 70.9] & 64.2 & 61.1 & 35.7 & 60.0 [51.9, 68.2] \\
+ & Generic RAG & 91.0 & 92.6 & 50.0 & 87.4 [82.1, 92.6] & 88.1 & 87.0 & 50.0 & 83.7 [77.5, 89.6] \\
+ & Country RAG & 92.5 & 96.3 & 92.9 & 94.1 [89.7, 97.8] & 89.6 & 94.4 & 100.0 & 92.6 [87.7, 97.0] \\
+\bottomrule
+\end{tabular}
+\par\smallskip\parbox{\linewidth}{\scriptsize Conflict items are scored against the patient-country rule. † Also used to draft some candidate items (qwen2.5-7b); ‡ same model family. See Table S1 for accuracy split by item drafter.}
+\end{table}
+
+% ---- T2_bn_gap ----
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{Bangla--English accuracy gap (paired items).}
+\label{tab:gap}
+\begin{tabular}{llrrr}
+\toprule
+Model & Setting & EN $-$ BN (pp) [95\% CI] & Discordant (EN-only / BN-only correct) & McNemar p (Holm) \\
+\midrule
+Qwen2.5-7B$^\dagger$ & Zero-shot & 8.1 [0.0, 16.3] & 23 / 12 & 0.455 \\
+ & Generic RAG & 11.1 [5.1, 17.3] & 17 / 2 & 0.008 \\
+ & Country RAG & 9.6 [3.7, 15.9] & 16 / 3 & 0.035 \\
+\addlinespace
+Qwen2.5-3B$^\ddagger$ & Zero-shot & 11.1 [3.0, 19.3] & 24 / 9 & 0.089 \\
+ & Generic RAG & 14.1 [6.7, 21.9] & 27 / 8 & 0.021 \\
+ & Country RAG & 20.0 [12.9, 27.3] & 28 / 1 & <0.001 \\
+\addlinespace
+Llama-3.1-8B & Zero-shot & 2.2 [-6.0, 11.0] & 20 / 17 & 1.000 \\
+ & Generic RAG & 8.9 [3.0, 15.8] & 16 / 4 & 0.083 \\
+ & Country RAG & 8.9 [4.3, 14.5] & 13 / 1 & 0.018 \\
+\addlinespace
+Gemma-2-9B & Zero-shot & 3.0 [-3.8, 9.7] & 14 / 10 & 1.000 \\
+ & Generic RAG & 3.7 [-1.5, 9.0] & 9 / 4 & 1.000 \\
+ & Country RAG & 1.5 [-2.2, 5.2] & 4 / 2 & 1.000 \\
+\bottomrule
+\end{tabular}
+\par\smallskip\parbox{\linewidth}{\scriptsize Positive values: English better. CI: cluster bootstrap over questions. † Also used to draft some candidate items (qwen2.5-7b); ‡ same model family. See Table S1 for accuracy split by item drafter.}
+\end{table}
+
+% ---- T3_conflict ----
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{Behaviour on conflict items: Guideline-Mismatch Rate (GMR) = share of answers matching the other country\textquotesingle s rule.}
+\label{tab:conflict}
+\begin{tabular}{llrrrrr}
+\toprule
+Model & Setting & Lang & Patient's country (\%) & GMR (\%) & Neither (\%) & Format fail (\%) \\
+\midrule
+Qwen2.5-7B$^\dagger$ & Zero-shot & EN & 35.7 [14.3, 50.0] & 35.7 [14.3, 50.0] & 28.6 & 0.0 \\
+ & Zero-shot & BN & 42.9 [28.6, 50.0] & 42.9 [28.6, 50.0] & 14.3 & 0.0 \\
+ & Generic RAG & EN & 50.0 [50.0, 50.0] & 50.0 [50.0, 50.0] & 0.0 & 0.0 \\
+ & Generic RAG & BN & 50.0 [50.0, 50.0] & 50.0 [50.0, 50.0] & 0.0 & 0.0 \\
+ & Country RAG & EN & 92.9 [78.6, 100.0] & 7.1 [0.0, 21.4] & 0.0 & 0.0 \\
+ & Country RAG & BN & 71.4 [42.9, 92.9] & 14.3 [0.0, 28.6] & 14.3 & 0.0 \\
+\addlinespace
+Qwen2.5-3B$^\ddagger$ & Zero-shot & EN & 35.7 [14.3, 50.0] & 35.7 [14.3, 50.0] & 28.6 & 0.0 \\
+ & Zero-shot & BN & 35.7 [21.4, 50.0] & 28.6 [7.1, 42.9] & 35.7 & 0.0 \\
+ & Generic RAG & EN & 57.1 [50.0, 71.4] & 42.9 [28.6, 50.0] & 0.0 & 0.0 \\
+ & Generic RAG & BN & 50.0 [50.0, 50.0] & 50.0 [50.0, 50.0] & 0.0 & 0.0 \\
+ & Country RAG & EN & 85.7 [71.4, 100.0] & 14.3 [0.0, 28.6] & 0.0 & 0.0 \\
+ & Country RAG & BN & 64.3 [35.7, 92.9] & 21.4 [7.0, 42.9] & 14.3 & 0.0 \\
+\addlinespace
+Llama-3.1-8B & Zero-shot & EN & 21.4 [7.1, 35.7] & 21.4 [7.1, 35.7] & 57.1 & 0.0 \\
+ & Zero-shot & BN & 21.4 [7.1, 42.9] & 21.4 [7.1, 42.9] & 57.1 & 0.0 \\
+ & Generic RAG & EN & 50.0 [50.0, 50.0] & 50.0 [50.0, 50.0] & 0.0 & 0.0 \\
+ & Generic RAG & BN & 50.0 [50.0, 50.0] & 50.0 [50.0, 50.0] & 0.0 & 0.0 \\
+ & Country RAG & EN & 92.9 [78.6, 100.0] & 7.1 [0.0, 21.4] & 0.0 & 0.0 \\
+ & Country RAG & BN & 78.6 [64.3, 92.9] & 21.4 [7.1, 35.7] & 0.0 & 0.0 \\
+\addlinespace
+Gemma-2-9B & Zero-shot & EN & 35.7 [14.3, 50.0] & 35.7 [14.3, 50.0] & 28.6 & 0.0 \\
+ & Zero-shot & BN & 35.7 [21.4, 50.0] & 35.7 [21.4, 50.0] & 28.6 & 0.0 \\
+ & Generic RAG & EN & 50.0 [50.0, 50.0] & 50.0 [50.0, 50.0] & 0.0 & 0.0 \\
+ & Generic RAG & BN & 50.0 [50.0, 50.0] & 50.0 [50.0, 50.0] & 0.0 & 0.0 \\
+ & Country RAG & EN & 92.9 [78.6, 100.0] & 7.1 [0.0, 21.4] & 0.0 & 0.0 \\
+ & Country RAG & BN & 100.0 [100.0, 100.0] & 0.0 [0.0, 0.0] & 0.0 & 0.0 \\
+\bottomrule
+\end{tabular}
+\par\smallskip\parbox{\linewidth}{\scriptsize † Also used to draft some candidate items (qwen2.5-7b); ‡ same model family. See Table S1 for accuracy split by item drafter.}
+\end{table}
+
+% ---- T4_settings ----
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{Effect of retrieval setting on accuracy (paired items).}
+\label{tab:settings}
+\begin{tabular}{llrrr}
+\toprule
+Model & Lang & Comparison & $\Delta$ (pp) [95\% CI] & McNemar p (Holm) \\
+\midrule
+Qwen2.5-7B$^\dagger$ & EN & Country RAG $-$ Zero-shot & 32.6 [23.5, 41.1] & <0.001 \\
+ & EN & Country RAG $-$ Generic RAG & 5.9 [0.7, 11.2] & 0.157 \\
+ & EN & Generic RAG $-$ Zero-shot & 26.7 [18.0, 35.6] & <0.001 \\
+ & BN & Country RAG $-$ Zero-shot & 31.1 [21.9, 40.4] & <0.001 \\
+ & BN & Country RAG $-$ Generic RAG & 7.4 [0.8, 14.0] & 0.157 \\
+ & BN & Generic RAG $-$ Zero-shot & 23.7 [14.9, 33.6] & <0.001 \\
+\addlinespace
+Qwen2.5-3B$^\ddagger$ & EN & Country RAG $-$ Zero-shot & 34.1 [25.8, 42.4] & <0.001 \\
+ & EN & Country RAG $-$ Generic RAG & 8.1 [2.9, 13.8] & 0.064 \\
+ & EN & Generic RAG $-$ Zero-shot & 25.9 [16.9, 34.8] & <0.001 \\
+ & BN & Country RAG $-$ Zero-shot & 25.2 [15.0, 35.0] & <0.001 \\
+ & BN & Country RAG $-$ Generic RAG & 2.2 [-5.1, 9.2] & 0.678 \\
+ & BN & Generic RAG $-$ Zero-shot & 23.0 [12.0, 33.6] & 0.001 \\
+\addlinespace
+Llama-3.1-8B & EN & Country RAG $-$ Zero-shot & 40.7 [32.3, 49.6] & <0.001 \\
+ & EN & Country RAG $-$ Generic RAG & 8.9 [3.8, 13.9] & 0.015 \\
+ & EN & Generic RAG $-$ Zero-shot & 31.9 [23.4, 40.7] & <0.001 \\
+ & BN & Country RAG $-$ Zero-shot & 34.1 [25.2, 43.1] & <0.001 \\
+ & BN & Country RAG $-$ Generic RAG & 8.9 [3.1, 14.7] & 0.029 \\
+ & BN & Generic RAG $-$ Zero-shot & 25.2 [15.4, 35.0] & <0.001 \\
+\addlinespace
+Gemma-2-9B & EN & Country RAG $-$ Zero-shot & 31.1 [21.7, 40.0] & <0.001 \\
+ & EN & Country RAG $-$ Generic RAG & 6.7 [2.3, 11.3] & 0.090 \\
+ & EN & Generic RAG $-$ Zero-shot & 24.4 [15.7, 33.3] & <0.001 \\
+ & BN & Country RAG $-$ Zero-shot & 32.6 [23.3, 41.2] & <0.001 \\
+ & BN & Country RAG $-$ Generic RAG & 8.9 [3.0, 14.7] & 0.045 \\
+ & BN & Generic RAG $-$ Zero-shot & 23.7 [15.8, 31.7] & <0.001 \\
+\bottomrule
+\end{tabular}
+\par\smallskip\parbox{\linewidth}{\scriptsize † Also used to draft some candidate items (qwen2.5-7b); ‡ same model family. See Table S1 for accuracy split by item drafter.}
+\end{table}
+
+% ---- T5_format ----
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{Answer-format failure rate.}
+\label{tab:format}
+\begin{tabular}{llrrr}
+\toprule
+Model & Setting & Lang & No valid option (\%) & Not in requested format (\%) \\
+\midrule
+Gemma-2-9B & Country RAG & BN & 0.7 & 0.7 \\
+ & Country RAG & EN & 0.7 & 0.7 \\
+ & Generic RAG & BN & 0.7 & 0.7 \\
+ & Generic RAG & EN & 1.5 & 1.5 \\
+ & Zero-shot & BN & 0.0 & 0.0 \\
+ & Zero-shot & EN & 0.0 & 0.0 \\
+\addlinespace
+Llama-3.1-8B & Country RAG & BN & 0.0 & 0.0 \\
+ & Country RAG & EN & 0.0 & 0.0 \\
+ & Generic RAG & BN & 0.0 & 0.0 \\
+ & Generic RAG & EN & 0.0 & 0.0 \\
+ & Zero-shot & BN & 3.7 & 3.7 \\
+ & Zero-shot & EN & 0.0 & 0.0 \\
+\addlinespace
+Qwen2.5-3B$^\ddagger$ & Country RAG & BN & 0.0 & 0.0 \\
+ & Country RAG & EN & 0.0 & 0.0 \\
+ & Generic RAG & BN & 0.0 & 0.0 \\
+ & Generic RAG & EN & 0.0 & 0.0 \\
+ & Zero-shot & BN & 0.0 & 0.0 \\
+ & Zero-shot & EN & 0.0 & 0.0 \\
+\addlinespace
+Qwen2.5-7B$^\dagger$ & Country RAG & BN & 0.0 & 0.0 \\
+ & Country RAG & EN & 0.0 & 0.0 \\
+ & Generic RAG & BN & 0.0 & 0.0 \\
+ & Generic RAG & EN & 0.0 & 0.0 \\
+ & Zero-shot & BN & 0.0 & 0.0 \\
+ & Zero-shot & EN & 0.0 & 0.0 \\
+\bottomrule
+\end{tabular}
+\par\smallskip\parbox{\linewidth}{\scriptsize Unparseable answers are counted as incorrect. † Also used to draft some candidate items (qwen2.5-7b); ‡ same model family. See Table S1 for accuracy split by item drafter.}
+\end{table}
+
+% ---- S1_draft_bias ----
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{Accuracy (\%) split by who drafted the item (all settings pooled).}
+\label{tab:draft}
+\begin{tabular}{llrrr}
+\toprule
+Model & Lang & claude (n=186) & gemini-2.5-flash (n=150) & qwen2.5-7b (n=69) \\
+\midrule
+Qwen2.5-7B$^\dagger$ & EN & 77.4 [71.2, 83.6] & 81.3 [73.3, 88.0] & 91.3 [85.5, 97.1] \\
+ & BN & 71.0 [64.0, 78.3] & 70.0 [60.0, 78.7] & 76.8 [65.2, 87.0] \\
+\addlinespace
+Qwen2.5-3B$^\ddagger$ & EN & 78.5 [72.9, 84.2] & 74.7 [65.3, 82.7] & 91.3 [85.5, 97.1] \\
+ & BN & 64.5 [56.2, 72.2] & 62.7 [53.3, 72.0] & 66.7 [52.2, 79.7] \\
+\addlinespace
+Llama-3.1-8B & EN & 76.3 [70.5, 82.7] & 78.7 [71.3, 85.3] & 91.3 [81.2, 98.6] \\
+ & BN & 72.0 [66.1, 78.7] & 69.3 [58.7, 78.7] & 84.1 [75.4, 92.8] \\
+\addlinespace
+Gemma-2-9B & EN & 79.0 [72.7, 85.1] & 79.3 [72.7, 86.0] & 92.8 [87.0, 98.6] \\
+ & BN & 75.8 [68.8, 82.8] & 77.3 [70.0, 84.7] & 89.9 [81.2, 97.1] \\
+\bottomrule
+\end{tabular}
+\par\smallskip\parbox{\linewidth}{\scriptsize † Also used to draft some candidate items (qwen2.5-7b); ‡ same model family. See Table S1 for accuracy split by item drafter. Column n = evaluated units.}
+\end{table}
+
+% ---- T6_deploy ----
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{Offline deployability on a single free-tier GPU (4-bit NF4, batch 1).}
+\label{tab:deploy}
+\begin{tabular}{llrrrrrrrr}
+\toprule
+Model & License & Weights (GB) & Peak VRAM (GB) & Load (s) & Median s/item EN & Median s/item BN & Out tok/s & BN/EN input tokens & Best acc EN / BN (\%) \\
+\midrule
+Qwen2.5-7B$^\dagger$ & Apache-2.0 & 5.44 & 8.63 & 118.70 & 2.87 & 4.05 & 2.16 & 1.27 & 94.1 / 84.4 \\
+\addlinespace
+Qwen2.5-3B$^\ddagger$ & Qwen Research & 2.01 & 3.86 & 44.20 & 1.91 & 2.71 & 3.22 & 1.27 & 93.3 / 73.3 \\
+\addlinespace
+Llama-3.1-8B & Llama 3.1 Community & 5.59 & 8.90 & 113.20 & 3.58 & 5.29 & 2.07 & 1.32 & 96.3 / 87.4 \\
+\addlinespace
+Gemma-2-9B & Gemma Terms of Use & 7.83 & 11.36 & 153.50 & 13.34 & 15.48 & 0.70 & 1.12 & 94.1 / 92.6 \\
+\bottomrule
+\end{tabular}
+\par\smallskip\parbox{\linewidth}{\scriptsize GPU: Tesla T4. Peak VRAM = torch max allocated during generation. † Also used to draft some candidate items (qwen2.5-7b); ‡ same model family. See Table S1 for accuracy split by item drafter.}
+\end{table}
+
+% ---- S2_retrieval ----
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{Retrieval quality (bge-m3, top-4).}
+\label{tab:retrieval}
+\begin{tabular}{llrrr}
+\toprule
+Setting & Patient & Query lang & Evidence page in top-4 (\%) & Passages from patient country (\%) \\
+\midrule
+Country RAG & BD & BN & 89.2 & 100.0 \\
+ & BD & EN & 93.2 & 100.0 \\
+ & IN & BN & 95.1 & 100.0 \\
+ & IN & EN & 98.4 & 100.0 \\
+\addlinespace
+Generic RAG & BD & BN & 81.1 & 65.9 \\
+ & BD & EN & 85.1 & 66.2 \\
+ & IN & BN & 77.0 & 52.9 \\
+ & IN & EN & 85.2 & 54.5 \\
+\bottomrule
+\end{tabular}
+\end{table}
+

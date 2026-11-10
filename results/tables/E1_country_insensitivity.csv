@@ -1,0 +1,13 @@
+﻿Model,Setting,"Same answer for BD & IN patient, EN (%)",BN (%)
+Qwen2.5-7B,Zero-shot,100.0,100.0
+Qwen2.5-7B,Generic RAG,100.0,100.0
+Qwen2.5-7B,Country RAG,14.3,42.9
+Qwen2.5-3B,Zero-shot,100.0,85.7
+Qwen2.5-3B,Generic RAG,85.7,100.0
+Qwen2.5-3B,Country RAG,28.6,57.1
+Llama-3.1-8B,Zero-shot,85.7,100.0
+Llama-3.1-8B,Generic RAG,100.0,100.0
+Llama-3.1-8B,Country RAG,14.3,42.9
+Gemma-2-9B,Zero-shot,100.0,100.0
+Gemma-2-9B,Generic RAG,100.0,100.0
+Gemma-2-9B,Country RAG,14.3,0.0

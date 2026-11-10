@@ -1,0 +1,11 @@
+﻿model,setting,lang,qid,response
+gemma2-9b,rag_generic,en,Q034,Answer:  The provided text does not contain the answer to this question.
+gemma2-9b,rag_generic,en,Q117,Answer:  None of the provided options are mentioned in the text.
+gemma2-9b,rag_country,en,Q117,Answer:  None of the above
+gemma2-9b,rag_generic,bn,Q117,উত্তর:
+gemma2-9b,rag_country,bn,Q117,উত্তর:
+llama3.1-8b,zeroshot,bn,Q051,ভারতের জাতীয় ডেঙ্�
+llama3.1-8b,zeroshot,bn,Q111,বাংলাদেশের জাতীয় �
+llama3.1-8b,zeroshot,bn,Q125,ভারতের জাতীয় ডেঙ্�
+llama3.1-8b,zeroshot,bn,Q133,ভারতের জাতীয় ডেঙ্�
+llama3.1-8b,zeroshot,bn,Q135,ভারতের জাতীয় ডেঙ্�

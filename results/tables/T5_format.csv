@@ -1,0 +1,25 @@
+﻿Model,Setting,Lang,No valid option (%),Not in requested format (%)
+Gemma-2-9B,Country RAG,BN,0.7,0.7
+Gemma-2-9B,Country RAG,EN,0.7,0.7
+Gemma-2-9B,Generic RAG,BN,0.7,0.7
+Gemma-2-9B,Generic RAG,EN,1.5,1.5
+Gemma-2-9B,Zero-shot,BN,0.0,0.0
+Gemma-2-9B,Zero-shot,EN,0.0,0.0
+Llama-3.1-8B,Country RAG,BN,0.0,0.0
+Llama-3.1-8B,Country RAG,EN,0.0,0.0
+Llama-3.1-8B,Generic RAG,BN,0.0,0.0
+Llama-3.1-8B,Generic RAG,EN,0.0,0.0
+Llama-3.1-8B,Zero-shot,BN,3.7,3.7
+Llama-3.1-8B,Zero-shot,EN,0.0,0.0
+Qwen2.5-3B‡,Country RAG,BN,0.0,0.0
+Qwen2.5-3B‡,Country RAG,EN,0.0,0.0
+Qwen2.5-3B‡,Generic RAG,BN,0.0,0.0
+Qwen2.5-3B‡,Generic RAG,EN,0.0,0.0
+Qwen2.5-3B‡,Zero-shot,BN,0.0,0.0
+Qwen2.5-3B‡,Zero-shot,EN,0.0,0.0
+Qwen2.5-7B†,Country RAG,BN,0.0,0.0
+Qwen2.5-7B†,Country RAG,EN,0.0,0.0
+Qwen2.5-7B†,Generic RAG,BN,0.0,0.0
+Qwen2.5-7B†,Generic RAG,EN,0.0,0.0
+Qwen2.5-7B†,Zero-shot,BN,0.0,0.0
+Qwen2.5-7B†,Zero-shot,EN,0.0,0.0

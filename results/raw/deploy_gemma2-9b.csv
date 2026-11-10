@@ -1,0 +1,2 @@
+model,model_id,license,env,gpu,quant,compute_dtype,load_s,vram_after_load_gb,vram_peak_gb,vram_reserved_peak_gb,weights_footprint_gb,batch,items_this_session,session_s,ts
+gemma2-9b,google/gemma-2-9b-it,Gemma Terms of Use,kaggle,Tesla T4,4bit,float32,153.5,8.168,11.357,15.116,7.834,1,816,9399.6,2026-10-24 10:58:29

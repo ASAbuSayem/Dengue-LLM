@@ -1,0 +1,2 @@
+model,model_id,license,env,gpu,quant,compute_dtype,load_s,vram_after_load_gb,vram_peak_gb,vram_reserved_peak_gb,weights_footprint_gb,batch,items_this_session,session_s,ts
+llama3.1-8b,meta-llama/Llama-3.1-8B-Instruct,Llama 3.1 Community,kaggle,Tesla T4,4bit,float16,113.2,5.821,8.9,14.468,5.592,1,816,2832.0,2026-10-24 12:01:22

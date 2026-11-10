@@ -1,0 +1,4 @@
+﻿qid,Set,Patient,Topic,Gold,Gold text,Predictions,Question
+Q024,BD,BD,platelet_tx,C,"Above 50,000/mm3","Qwen2.5-7B: D, Qwen2.5-3B: D, Llama-3.1-8B: D, Gemma-2-9B: D","If obstetric procedures are deemed necessary for a pregnant patient with DF/DHF, what is the recommended minimum platelet count to maintain?"
+Q026,IN,IN,platelet_tx,D,5 ml/kg,"Qwen2.5-7B: B, Qwen2.5-3B: B, Llama-3.1-8B: B, Gemma-2-9B: B","In the management of severe haemorrhage where blood loss cannot be quantified, what is the recommended aliquot for transfusion of freshly packed red cells?"
+Q056,BD,BD,shock,C,Prolonged (>2 sec),"Qwen2.5-7B: B, Qwen2.5-3B: B, Llama-3.1-8B: B, Gemma-2-9B: B","According to the guideline, what is the characteristic capillary refill time for a patient in compensated shock?"

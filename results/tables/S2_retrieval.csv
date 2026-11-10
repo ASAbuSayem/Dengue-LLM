@@ -1,0 +1,9 @@
+﻿Setting,Patient,Query lang,Evidence page in top-4 (%),Passages from patient country (%)
+Country RAG,BD,BN,89.2,100.0
+Country RAG,BD,EN,93.2,100.0
+Country RAG,IN,BN,95.1,100.0
+Country RAG,IN,EN,98.4,100.0
+Generic RAG,BD,BN,81.1,65.9
+Generic RAG,BD,EN,85.1,66.2
+Generic RAG,IN,BN,77.0,52.9
+Generic RAG,IN,EN,85.2,54.5

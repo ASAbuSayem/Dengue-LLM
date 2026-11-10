@@ -1,0 +1,2 @@
+model,model_id,license,env,gpu,quant,compute_dtype,load_s,vram_after_load_gb,vram_peak_gb,vram_reserved_peak_gb,weights_footprint_gb,batch,items_this_session,session_s,ts
+qwen2.5-3b,Qwen/Qwen2.5-3B-Instruct,Qwen Research,kaggle,Tesla T4,4bit,float16,44.2,2.118,3.857,11.551,2.01,1,816,1529.0,2026-10-24 07:49:59

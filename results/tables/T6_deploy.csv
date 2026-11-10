@@ -1,0 +1,5 @@
+﻿Model,License,Weights (GB),Peak VRAM (GB),Load (s),Median s/item EN,Median s/item BN,Out tok/s,BN/EN input tokens,Best acc EN / BN (%)
+Qwen2.5-7B†,Apache-2.0,5.44,8.63,118.70,2.87,4.05,2.16,1.27,94.1 / 84.4
+Qwen2.5-3B‡,Qwen Research,2.01,3.86,44.20,1.91,2.71,3.22,1.27,93.3 / 73.3
+Llama-3.1-8B,Llama 3.1 Community,5.59,8.90,113.20,3.58,5.29,2.07,1.32,96.3 / 87.4
+Gemma-2-9B,Gemma Terms of Use,7.83,11.36,153.50,13.34,15.48,0.70,1.12,94.1 / 92.6

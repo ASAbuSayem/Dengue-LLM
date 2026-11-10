@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{Offline deployability on one NVIDIA T4 (16 GB), 4-bit NF4, batch 1.}
+\label{tab:deploy}
+\begin{tabular}{lrrrrrrrrrr}
+\toprule
+Model & Licence & Compute dtype & Weights (GB) & Peak VRAM (GB) & Load (s) & Median s/item EN & Median s/item BN & Tokens/s (prompt+output) & Median prompt tokens EN / BN & Country-RAG acc EN / BN (\%) \\
+\midrule
+Qwen2.5-7B & Apache-2.0 & float16 & 5.44 & 8.63 & 119 & 2.87 & 4.05 & 617 & 2046 / 2476 & 94.1 / 84.4 \\
+Qwen2.5-3B & Qwen Research & float16 & 2.01 & 3.86 & 44 & 1.91 & 2.71 & 919 & 2046 / 2476 & 93.3 / 73.3 \\
+Llama-3.1-8B & Llama 3.1 Community & float16 & 5.59 & 8.90 & 113 & 3.58 & 5.29 & 493 & 2029 / 2508 & 96.3 / 87.4 \\
+Gemma-2-9B & Gemma Terms of Use & float32 & 7.83 & 11.36 & 154 & 13.34 & 15.48 & 132 & 1913 / 2096 & 94.1 / 92.6 \\
+\bottomrule
+\end{tabular}
+\par\smallskip\parbox{\linewidth}{\scriptsize Gemma-2 used fp32 compute because fp16 can overflow for Gemma-2 and the T4 has no bf16; its timing is therefore not directly comparable. Tokens/s counts prompt and generated tokens, since answers are only a few tokens long.}
+\end{table}

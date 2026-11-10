@@ -1,14 +1,14 @@
-# Can Small Open-Weight Language Models Follow National Dengue Guidelines?
+# Evaluating Small Open-Weight Language Models on the National Dengue Guidelines of Bangladesh and India
 
-**An Offline Bilingual (Bangla–English) Evaluation for Bangladesh and India**
+**Bangla–English benchmark and offline evaluation code**
 
-A bilingual (Bangla–English) benchmark and evaluation code for testing whether language models follow the national dengue clinical-management guidelines of Bangladesh and India. Everything runs offline on a single free-tier GPU, and the benchmark, notebooks and results can be reused for any model or study.
+A bilingual (Bangla–English) benchmark and evaluation code for testing whether language models follow the national dengue clinical-management guidelines of Bangladesh and India. Everything runs offline on a single NVIDIA T4 GPU (16 GB VRAM), and the benchmark, notebooks and results can be reused for any model or study.
 
 ---
 
 ## What this repository contains
 
-A multiple-choice benchmark built from the national dengue clinical-management guidelines of Bangladesh and India, asked in English and Bangla, and the notebooks that evaluate small open-weight LLMs on it, running offline on a single free-tier GPU.
+A multiple-choice benchmark built from the national dengue clinical-management guidelines of Bangladesh and India, asked in English and Bangla, and the notebooks that evaluate small open-weight LLMs on it, running offline on a single NVIDIA T4 GPU (16 GB VRAM).
 
 | Research question | What is measured |
 |---|---|
@@ -106,6 +106,27 @@ NB1 and NB2 both mount Google Drive and keep everything under `MyDrive/DengueLLM
 | `figures/fig1–fig4, figS1` (PDF, PNG) | Accuracy by setting, Bangla gap, conflict behaviour, accuracy vs cost, retrieval recall |
 
 Statistics: 95% confidence intervals from a cluster bootstrap over questions (2,000 resamples); paired comparisons use McNemar's test with Holm correction.
+
+## Prompts and retrieval settings
+Every prompt states the country of treatment. English user prompt (Bangla is a full translation, see NB2 cell 5):
+
+```
+The patient is being treated in <Bangladesh|India>. Follow the national dengue clinical guideline of <Bangladesh|India>.
+
+[RAG settings only] Use the following guideline excerpts:
+[Passage k | <guideline>, p. <start>-<end>]
+<chunk text>
+
+Question: <question>
+A. ... B. ... C. ... D. ...
+
+Reply with only the letter of the correct option (A, B, C or D) in the form "Answer: X".
+```
+
+- System message: answer according to the national dengue clinical guideline of the country of treatment.
+- Retrieval: `BAAI/bge-m3` dense embeddings (max 512 tokens, L2-normalised, cosine similarity); query = question + four options; top-4 chunks of ~300 words with 50-word overlap.
+- Generic RAG searches all 163 chunks; country RAG searches only the chunks of the country of treatment.
+- Models: `Qwen/Qwen2.5-7B-Instruct`, `Qwen/Qwen2.5-3B-Instruct`, `meta-llama/Llama-3.1-8B-Instruct`, `google/gemma-2-9b-it`; 4-bit NF4 (bitsandbytes), float16 compute (float32 for Gemma-2), greedy, `max_new_tokens=24`, batch 1, seed 42.
 
 ## Reproducibility
 - Seed 42 everywhere; greedy decoding (`do_sample=False`); `max_new_tokens=24`; batch size 1.
